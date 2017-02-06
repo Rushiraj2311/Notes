@@ -1,0 +1,22 @@
+monitoring
+
+Monitoring is needed for infrastrucure provisioning and measuring its state.
+in case of any failure to spin up a new machine and extra instances can be done using monitoring
+
+available  tools
+Nagios - old and very stable since 1999
+Sensu - zabbix and cloudwatch(AWS)
+
+Appllication monitoring
+issue with the application
+new relic most popular
+when the application slows down alerts
+
+
+logfile aggregation
+logfile insights on what is happening on server
+ELK stack - elastic search , log stash and kibana can be scalled over thhousands of servers
+more work to setup
+complex algo can be range over output
+
+

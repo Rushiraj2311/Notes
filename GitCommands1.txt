@@ -1,0 +1,67 @@
+
+git clone URLtoRepo
+cd Repo
+echo "add soomething" > 
+git add test.txt [added locally]
+git git commit -m "adding it" [comment to add it]
+git push [ now added to master at the github]
+
+creating a  branch
+git branch firstbranch   [got created on the github]
+git checkout firstbranch [now its in the local]
+git branch [check where are you]
+echo "adding first file to branch " > testit.txt [create new file locally]
+git add testit.txt [add file locally]
+git commit -m "into thhe file" [added to the github branch]
+git checkout master [master is now in the local computer]
+git merge firstbranch [firstbranch is now merged in to the master or mainline]
+git push [added the changes in to the github]
+
+
+429  git remote add origin https://github.com/Rushiraj2311/play-demo.git
+  430  git add 
+  431  git push -u origin master
+
+
+tasks
+complete the part of  the sonarqube
+complete the local docker repository
+complete local hashicorp repository
+http://www.informit.com/articles/article.aspx?p=2464012
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-14-04
+
+
+video 31 and 34
+
+root00
+root00
+
+
+code repository -
+code review
+code quality
+build (ANT/Maven)
+Packaging (Ansible/Chef/Puppet)
+deployment - (Chef/Ansible/Puppet)
+cloud - VCD,OpenStack, Azure, AWS
+CI/CD - Jenkins, Bamboo ,Travis
+testing - Junit , selenium, QTP, LoadRunner, WinRunner,
+Opensource scanning - HP protecode , black duck
+monitoring
+mircoservices - Docker containers, kubernetes
+session management - redis
+monitoring - nagios, ELK
+bigdata - kibana
+service discovery - consul.io
+
+
+EC2
+storage
+Cloudwatch
+couldmonitor
+VPC
+distributed application
+cloudformation
+
+
+

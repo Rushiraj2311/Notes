@@ -1,0 +1,75 @@
+Install the vagrant and virtual box in some directory
+
+Vagrant needs images to download 
+simplest imange is ubuntu/trusty64 image
+
+vagrant needs a vagrantfile to start with( which defines what to start , image, vcpu , memory , hostname, network, hostname etc)
+
+keep vagrantfil name the current working directory - by default it takes from current directory
+
+vagrant  file directory
+
+Vagrant.configure(2) do |config|
+	config.vm.define "Rushi" do |Rushi|
+		Rushi.vm.box = "ubuntu/trusty64"
+		Rushi.vm.network "private_network", ip: "192.168.0.X"
+		Rushi.vm.hostname = "Rushi.example.com"
+		Rushi.vm.provision "shell", path: "C:\users\Rushi\Downloads\DevOps\docker-swarm-demo\abc.sh"
+		Rushi.vm.provider "virtualbox" do |v|
+			v.memory = 4096
+			v.cpus = 2
+		end
+	end
+end
+
+
+what vagrant can do ?
+	article 
+	create a repo of local machine that can be used by users - high end machine to the developers [16 gb /i5 and 1 TB]
+
+
+vagrant up Rushi
+vagrant ssh Rushi
+vagrant halt Rushi - only stop machine gracefully
+vagrant destroy Rushi - delete everything all traces of machine
+vagrant init  -initalizes the new machine  by initializing a new  file
+vagrant login - login to hashicorp atlas
+vagrant pakcage - package running env in to a box
+vagrant box - manager box install, 
+vagrant global-status -- give info on all vm created on this machine 
+vagrant plugin - manage plugins 
+vagrant port -- port forwards of the perticular macine
+vagrant powershell vm -- connect to machine using powershell
+vagrant provision -- provision a vagrant machine  
+vagrant push -- deploys code of  this env to destination
+vagrant rdp -- connect to machine using RDP
+vagrant reload -- reloads the machine with changes in vagrant file [increase in cpu, core , memory etc]
+vagrant resume -- resume suspended machine
+vagrant share -- share env wiith anyone in the world
+vagrant ssh  --connect to machine using a ssh terminal
+vagrant status -- status of the vm
+vagrant up --start machine
+vagrant version  --pring currnet and latest versin of vagroant
+vagrant snapshot - saving the snapshot of this machine 
+
+
+
+https://atlas.hashicorp.com/boxes/search
+
+virtualization
+virtual machine runs on its own OS on top of  the guest OS usingg the hypervisor running on the host OS
+++near complete host  separation -- unix on windows and vic-evarsa
+-- dedicates static amount of resouces
+
+
+containerization
+multiple application run on the signle kernel cgroup and namespaces are used to manage the containerization
+++better performance as there is no overhead of the hypervisor
+--containers use thhe host kernel  can be used on linux only, .. no funny stuff on the windows machines :)
+
+virtualbox
+virtual is a software that allows virtualization package that installs on an operating system on top of it
+
+
+
+

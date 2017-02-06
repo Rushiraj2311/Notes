@@ -1,0 +1,101 @@
+
+https://www.udemy.com/learn-devops-continuously-deliver-better-software/learn/v4/t/lecture/3982504
+
+
+
+
+kubernetes
+docker run --volume=/var/etcd:/var/etcd --net=host -d gcr.io/google_containers/etcd:2.0.12 /usr/local/bin/etcd --addr=127.0.0.1:4001 --bind-addr=0.0.0.0:4001 --data-dir=/var/etcd/data
+
+
+
+http://blog.guthnur.net/kubernetes-ubuntu-installation/
+
+sudo docker run --volume=/:/rootfs:ro --volume=/sys:/sys:ro --volume=/dev:/dev --volume=/var/lib/docker/:/var/lib/docker:ro --volume=/var/lib/kubelet/:/var/lib/kubelet:rw --volume=/var/run:/var/run:rw --net=host --pid=host --privileged=true -d gcr.io/google_containers/hyperkube:v1.0.1 /hyperkube kubelet --containerized --hostname-override="127.0.0.1" --address="0.0.0.0" --api-servers=http://localhost:8080 --config=/etc/kubernetes/manifests
+
+
+docker run -d --net=host --privileged gcr.io/google_containers/hyperkube:v1.0.1 /hyperkube proxy --master=http://127.0.0.1:8080 --v=2
+
+
+wget https://storage.googleapis.com/kubernetes-release/release/v1.0.1/bin/linux/amd64/kubectl
+
+
+container orchestration
+build is easy and keep running is diffiicult
+
+orchestration
+docker swarm native clustring in docker
+compose is tool to define multi container applicaiton link containers together and link them together
+
+container manager software(orchastrator)
+mesos (abs sotrage, cpu, memory)
+kubernetes ( linux container manager, get as sservice)
+PAAS - heroku  (more focuse on runnigng pass)
+Dokku & Deis - software asservice ( single and multi node)
+flynn
+
+
+Kubernetes manage containers
+open soucce orchestratin system 
+docker containers manger
+ensures state of users declaared intension
+uses labels and pods groups containers together for easy management and discovery
+
+lean and lightweight
+portable public and mahcine hypbrid cloud 
+extensible
+moduler and swappable
+open source
+
+----------------------------------
+
+master component	 node 1			node 2
+
+			minion			minion
+kubectl			kublet			kublet
+			pod1 .. n		pod 1.. n
+
+replicatin actutaror 
+manages the  pods
+			shared vol		share vol
+			smallest pod
+			deployable		
+
+			scalling up and 
+			down
+			
+			which backend
+
+			kubernets service
+			logic set of  pods
+			micro service
+			proxied to app backend
+			ip addresss - service ip answered 
+			ip table - to define virtual ip address
+			
+req - ip table - pod - 
+clinet - firewall -- ip table - proxy - pod  
+
+master				node1			node2
+apis				kublet
+
+scheduling 			pod1 .. 3
+rest				
+
+distributed SAN
+
+minions
+running kuerbenets kublets
+api shceuduler 
+kublet manages pods and managers
+pod can have one or more 
+replicatin creates and distryos pods dynamically 
+each node runs proxy and load balancer
+manager cluster kubectl will connect to REST api
+pod container with share voumes
+pod can come andgo - 
+scalling up and down provides
+
+
+
+

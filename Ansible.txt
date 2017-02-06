@@ -1,0 +1,253 @@
+Automation configuration maanngement
+
+automate of install and  config management
+puppet, chef, ansible, saltstack
+big puppet
+start up ansible
+Ansible
+ansible is new and easy tool
+no client , push
+
+
+Ansible				Chef
+ssh				chef-server chef-client , 30 min , chef-solo
+no state in asnsible,		keeps state with chef server in hosted chef server
+use tower to have  state
+
+new				older 2009
+python & yaml			ruby , erb, json
+
+low leraning curve, yaml	complex and higher lerning curve
+
+no more playbook		a lot of recipe available, aws opsworks
+
+can be less powerfull		code driven and flexible , more complicated
+
+aquired by redhat 2015		chef, opscode(private company,seattle)
+
+
+Ansible
+ansible softwrae on linux machine,  orchastrator, project  file and confi file is on server.
+hosts have just ssh key of public key of server
+ssh private key in the  ansible server
+ansible will establish secure connection and push changes all thing  over  ssh,  webserver on all servers, apt-get install 
+no daemon running  only run on demand, if ansible goes down , host remains up
+
+
+Install ansible machine
+
+provision two machine like below using vagrant,
+
+vagrant@ansible:~$ cat /vagrant/Vagrantfile .
+Vagrant.configure(2) do |config|
+  config.vm.define "webserver" do |webserver|
+    webserver.vm.box = "ubuntu/trusty64"
+    webserver.vm.network "private_network", ip: "192.168.0.2"
+    webserver.vm.hostname = "webserver"
+  end
+  config.vm.define "ansible" do |ansible|
+    ansible.vm.box = "ubuntu/trusty64"
+    ansible.vm.network "private_network", ip: "192.168.0.254"
+    ansible.vm.hostname = "ansible"
+  end
+end
+
+
+
+both are trusty64 ubuntu image
+
+
+install the apt-get install ansible
+vagrant@ansible:~$ sudo apt-get install ansible
+
+craet key pair on ansible using ssh-keygen , keep the public key of this in to the webser ~/.ssh/authorized_keys (apppend the file)
+
+create a file hosts in the home of the vagrant in ansible machine
+
+create a group and write the server ips, you can have multiple groups like this
+like
+webeservers
+database servers
+
+vagrant@webserver:~$ cat hosts
+[webservers]
+192.168.0.2
+
+servers can be groups as per the region also
+
+ansible inventory
+ssh-agent sends id_rsa key automatically so we need not go give this as the argument
+
+
+vagrant@ansible:~/.ssh$ ssh-agent bash
+vagrant@ansible:~/.ssh$ ssh-add .ssh/id_rsa
+vagrant@ansible:~/.ssh$ ssh-add id_rsa
+Identity added: id_rsa (id_rsa)
+
+
+vagrant@ansible:~$ ansible -i  hosts -u root -m ping all
+192.168.0.2 | success >> {
+    "changed": false,
+    "ping": "pong"
+}
+
+add the id_rsa.pub in the authorized keys of the root in to the webserver 
+
+ansible can run command  over  ssh on the agents using play boook
+
+example nginx
+installs nginx on the client
+
+Playbook
+
+vagrant@ansible:~$ cat  /vagrant/ansible-demo/nginx.yml
+---
+- hosts: webservers
+  vars:
+    user: www-data
+    worker_processes: 2
+    pid: /run/nginx.pid
+    worker_connections: 768
+  tasks:
+  - name: install nginx
+    apt: name=nginx state=latest update_cache=yes
+  - name: ensure nginx is running (and enable it at boot)
+    service: name=nginx state=started enabled=yes
+  - name: write the nginx config file
+    template: src=templates/nginx.conf.j2 dest=/etc/nginx/nginx.conf
+    notify:
+    - restart nginx
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+vagrant@ansible:~$
+
+
+first line shows the start of the yaml file
+send line shows 
+which hosts it should  run it is in the hosts file
+name is discripoin
+
+vagrant@ansible:~$ cat nginx.yml
+---
+- hosts: webservers
+  tasks:
+  - name: install nginx
+    apt: name=nginx state=latest update_cache=yes
+  - name: ensure nginx is running (and enable it at boot)
+    service: name=nginx state=started enabled=yes
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+
+to run thi on the webserver please run like below
+
+vagrant@ansible:~$ ansible-playbook -i hosts -u root nginx.yml
+
+PLAY [webservers] *************************************************************
+
+GATHERING FACTS ***************************************************************
+ok: [192.168.0.2]
+
+TASK: [install nginx] *********************************************************
+changed: [192.168.0.2]
+
+TASK: [ensure nginx is running (and enable it at boot)] ***********************
+ok: [192.168.0.2]
+
+PLAY RECAP ********************************************************************
+192.168.0.2                : ok=3    changed=1    unreachable=0    failed=0
+
+
+
+
+Running a playbook with the yml and configuration file
+
+
+
+vagrant@ansible:~$ cat nginx.conf.j2
+user {{ user }};
+worker_processes {{ worker_processes }};
+pid {{ pid }};
+
+events {
+        worker_connections {{ worker_connections }} ;
+}
+
+http {
+
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+        keepalive_timeout 65;
+        types_hash_max_size 2048;
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+
+        gzip on;
+        gzip_disable "msie6";
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+}
+vagrant@ansible:~$ cat nginx.yml
+---
+- hosts: webservers
+  vars:
+    user: www-data
+    worker_processes: 2
+    pid: /run/nginx.pid
+    worker_connections: 768
+  tasks:
+  - name: install nginx
+    apt: name=nginx state=latest update_cache=yes
+  - name: ensure nginx is running (and enable it at boot)
+    service: name=nginx state=started enabled=yes
+  - name: write the nginx config file
+    template: src=templates/nginx.conf.j2 dest=/etc/nginx/nginx.conf
+    notify:
+    - restart nginx
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+vagrant@ansible:~$ ls
+hosts  nginx.conf.j2  nginx.yml
+vagrant@ansible:~$ mkdir templates
+vagrant@ansible:~$ mv nginx.conf.j2 ./templates/
+vagrant@ansible:~$ ansible-playbook -i hosts -u  root nginx.yml
+
+PLAY [webservers] *************************************************************
+
+GATHERING FACTS ***************************************************************
+ok: [192.168.0.2]
+
+TASK: [install nginx] *********************************************************
+ok: [192.168.0.2]
+
+TASK: [ensure nginx is running (and enable it at boot)] ***********************
+ok: [192.168.0.2]
+
+TASK: [write the nginx config file] *******************************************
+changed: [192.168.0.2]
+
+NOTIFIED: [restart nginx] *****************************************************
+changed: [192.168.0.2]
+
+PLAY RECAP ********************************************************************
+192.168.0.2                : ok=5    changed=2    unreachable=0    failed=0
+
+
+
+file to install apache2 on the clinet
+---
+- hosts: apache
+  sudo: yes
+  tasks:
+    - name: install apache2
+      apt: name=apache2 update_cache=yes state=latest
+
+this will isntall apahce and will start the service

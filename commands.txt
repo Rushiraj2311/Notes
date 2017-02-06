@@ -1,0 +1,51 @@
+
+git clone URLtoRepo
+cd Repo
+echo "add soomething" > 
+git add test.txt [added locally]
+git commit -m "adding it" [comment to add it]
+git push [ now added to master at the github]
+
+creating a  branch
+git branch firstbranch   [got created on the github]
+git checkout firstbranch [now its in the local]
+git branch [check where are you]
+echo "adding first file to branch " > testit.txt [create new file locally]
+git add testit.txt [add file locally]
+git commit -m "into thhe file" [added to the github branch]
+git checkout master [master is now in the local computer]
+git merge firstbranch [firstbranch is now merged in to the master or mainline]
+git push [added the changes in to the github]
+
+
+429  git remote add origin https://github.com/Rushiraj2311/play-demo.git
+  430  git push
+  431  git push -u origin master
+
+
+video 31 and 34
+
+root00
+root00
+
+https://raw.githubusercontent.com/cncf/landscape/master/landscape/CloudNativeLandscape_v0.9.2.jpg
+
+https://www.google.co.in/search?q=jenkins+pipeline+example&biw=1366&bih=662&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjn5sSwlOfRAhVDLo8KHRdyDU4Q_AUIBigB#imgrc=RIAXIJvtLKHl7M%3A
+
+https://www.thoughtworks.com/radar
+
+https://www.packer.io/intro/getting-started/build-image.html
+
+
+http://highscalability.com/blog/category/example
+
+http://highscalability.com/blog/category/example
+
+https://content.pivotal.io/case-studies/indian-railways
+
+https://dzone.com/
+
+https://dzone.com/refcardz
+
+
+https://dzone.com/refcardz/continuous-integration-servers

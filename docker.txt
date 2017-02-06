@@ -1,0 +1,283 @@
+Microservice
+monolithic app has frond end, DB all in one, large and complex difficult to work as a team , high failure rate
+
+smaller service mirco services , UI , security, Customers, orders, REST APIs, benifits different technology, easier to understand
+seriice, faster to deploy
+
+DevOPS
+different appproach
+becomes distributed
+scales horizontal
+more fault tolerant, quicker than vertical
+VM ofen too slow, too big to tranfer images big
+containerization is better
+
+Docker
+open platofrm for dev and sysadmin to build ,ship distributed appps
+docker engine portable lightweiight runtime and packaging tool
+docker hub clout service for sharing apps and automating work flows
+enables apps quickly asssemble
+no  friction in dev/qa/infra
+ship faster
+same code and be used at laptop, VM, datacenter, production
+LXC - linux contanier OS level virtualizatoin
+
+
+using boot2docker
+vagrant - linux
+cloud -AWS ECS
+google container engine
+
+Docker vagrant
+vagrnat init ubuntu/trusty64
+sudo apt-get install docker.io
+
+sudo docker run centos7 /bin/echo "Hello World"
+ container users centos7
+ gets installed quckly
+  once its started a /bin/echo gets excecuted on this container and then it stops
+no waiting
+
+sudo docker run -t -i ubuntu:14.0.4 /bin/bash
+-i interactive
+next exit
+
+webpage
+sudo docker run -p 127.0.0.1:8080:80 -i ubuntu:14.0.4 nc -kl 80
+nc -kl opens port 80 and maps it to host machine
+
+
+dockerfile
+
+docker can build images automatically by reading instructuioons from a dockerfile
+dockerfile is text doc that contains all commmands a user coudl  call on ccommand line to asssemble an image
+using docker build users can creae an automated build that excutes serverl command line instruction in succession
+
+
+docker example file
+express freamework
+hello world
+
+
+pakcages the jason determines dependancies
+downloads express library
+
+dockerfile
+from node 0.12
+workdir /app
+add .
+
+
+
+index.js
+vagrant@jenkins:~/docker-demo$ cat index.js
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+var server = app.listen(3000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Example app listening at http://%s:%s', host, port);
+});
+
+
+vagrant@jenkins:~/docker-demo$ cat Dockerfile
+FROM node:4.6
+WORKDIR /app
+ADD . /app
+RUN npm install
+EXPOSE 3000
+CMD npm start
+
+
+build this 
+docker build .
+creates this from the node:4.6
+runs npm install on it
+starts it 
+
+sudo docker run -p 8080:3000 -t [image name]
+
+test the app
+
+
+
+docker architecture
+
+
+vitrual machine and containers
+
+physical server, host os(windows,linux,ESXi) , hypervisor(Linujx KVM, Zen AWS, hyperV Windows) can run differnt os guest os
+guest os , bin, kib , app is VM
+
+contaiiner, no guest os
+docker engine manages containers , 
+launch seprate os fro each container
+launcihing takes mili seconds, shares sme libs and bins, 
+docker - written in GO uses functionality host OS 
+	uses namespace and cgroups
+	seprate space for their identity - pid, ipc, mnt, uts
+	cgroup - limitation prioritizatino, cpu, memory, io network
+
+docker read only layers stacked together
+basis for containers
+ubuntu image
+read only layers - these layers stacked together can be shared together
+docker storage driver makes container see it as single layer
+new continer creaes a new layer, read write layer,  below are read only, 
+every contaner has its own container layer writable, blue is not writable 
+blue is intact 
+docker commit - to image to isnter the layer of this
+content  hash - improves better sharing 
+in practice better reuse of the images
+
+copy on write stratagy - one process changes then data the data will be copied and then will be change 
+			contains copy till boht have same date, once they write data gets copied first and then changed
+
+
+docker volumes
+loose the changes once dockers are done
+persistant dockers
+volume is directory - thin read write layers, initalizes when it start
+can be shared by container
+data goes to host OS
+written on host os persistant data store
+
+create mapping between container and directory host OS
+-v [locatin in host :/webapp]
+
+docker allows easily write data - containers can be started to other data,
+stateless applicatins  no need to have local data
+stateful app, system to make sure data avaialbe on other host
+docker volume plugin - external storage, unerline data can be transferred to differnt pluing
+flocker - plugin  (runs parallel to flocker agent) 
+
+
+docke networking
+new docker are  bridge networks, linking of port
+better way to user defined network
+same UDN can talked to each other
+overlay network - multiple host networks
+user defined bridge netwrok - multiple containers my network without extra configuraiton , external 
+
+
+	
+docker hub
+service that provides public and private registry AWS and hosted
+docker client talkes to docker daemon docker engine and then it 
+corporate firewall without the need of thhe docker hub
+store private images on docker hub
+
+
+docker compose
+multi container docker
+compose the lifecuycle of the container
+dockerfile  for efvery container
+docker compose
+development  testing and staging 
+CI test app on external service 
+web:
+  build: .
+  command: node index-db.js
+  ports:
+    - "3000:3000"
+  links:
+    - db
+  environment:
+    MYSQL_DATABASE: myapp
+    MYSQL_USER: myapp
+    MYSQL_PASSWORD: mysecurepass
+    MYSQL_HOST: db
+db:
+  image: orchardup/mysql
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_DATABASE: myapp
+    MYSQL_USER: myapp
+    MYSQL_PASSWORD: mysecurepass
+
+
+export COMPOSE_API_VERSION=1.18 
+issue of docker client and server gets okay
+
+
+docker-compose build && docker-compose up db
+docker-compose will build and make the db server up[ will download if the image is not available locally this may take time]
+docker-compose up -d web
+curl http://localhost:3000
+you are vistor number X
+docker-compose down
+
+
+docker-machine
+you can provison machine on cloud on AWS
+can run docker machine directly from workstation
+
+docker-swarm
+docker swarm enable natively doceker container
+build on docker api , any tool to communicate with docker daemon , scan use swarm to scale to multiple hosts
+to start wsware docker swarm image needs to be pulled and configured
+you can use docker machine to provision hosts and isntall swarm
+discovery can be used to store value key pair
+
+manger node 
+agent1
+agent2
+
+manager node is up
+swarm agent on both agent with consule
+swarm master an connect to docker engine and cna use as cluster
+swarm cluster needs a new vagrant file
+create a file  using 
+docker swarm in reference files
+contnet - uptodate
+apt-transfer 
+docker repository
+update
+install libs
+innstalll docker engines
+vagrant is in root users group
+
+docker-run swarm 
+token -- docker swarm contaner connects to docker hub and gets unique id discovery tockern, suitable for dev and testing
+consul and ,etcd 
+single machine consul 
+consul on master
+docker run -d -p 8500:8500 -name consul progrium/consul -server -bootstrap
+
+master daemon on master with registring in the consul
+docker run -d -p 4000:4000 swarm manage -H 4000 -advertise 192.168.0.248:4000 consul://192.168.0.248:8500
+
+agent1 
+docker run -d swarm join -advertise 192.168.0.247:2375 consul://192.168.248:8500
+
+agent2
+docker run -d swarm join -advertise 192.168.0.246:2375 consul://192.168.248:8500
+
+
+master
+docker -H :4000 info
+two nodes - both healthy
+
+container on swarm container
+
+master
+docker -H :4000 run -p 3000:3000 -d wardviaene/node-js.demo
+
+docker -H :4000 ps
+which host it has started
+
+curl 192.168.0.247:3000
+
+build image and push to the docker hub
+
+docker swarm and compose are going to be c
+take node-js and  mysql and run to cluster
+docs.docker.com 
+
