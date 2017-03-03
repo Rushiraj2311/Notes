@@ -1,0 +1,40 @@
+IAM - Indentity Access Management
+Configure Users and  their level of access 
+
+centralized control on AWS account
+shared access to your AWS account
+granular permission (jon smith can use DB in red only mode)
+Identity federation( active directory facebook, linkedIn) Single SignOn same username and password 
+Multifactore authentication(google authentication)
+provide temp access for users and device or services
+set up your  password rotation policy
+integrate with different AWS services(Lambda )
+supports PCI DSS compliance (order process ) third party
+
+critical terms
+uers end users (people)
+groups collection of  users under set of permission
+roles - create and assign them to AWS resources
+policies - a document that defines one( or more permissions)
+
+
+rushi
++7qVS19AJ8U4skqFvkILvl3en4SKe6Mdzsi9F8o/
+AKIAIRAO7NK4JRXDTA7A
+T7Ow7-fx*Qvz
+
+ryan
+kphttdQKGRjZ99X2ebjv4yV2oyfPuRKhxJ7WJwQg
+AKIAJLNHEH3HFDMDKHKQ
+8QMA7#|i'k@E
+
+copy all the sec, access and passwrod
+
+
+
+
+
+
+
+
+

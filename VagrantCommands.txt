@@ -53,6 +53,15 @@ vagrant version  --pring currnet and latest versin of vagroant
 vagrant snapshot - saving the snapshot of this machine 
 
 
+vagrant snapshot push
+vagrant snapshot pop
+vagrant snapshot save [vm_name] name
+vagrant snapshot restore  name
+
+
+packer validate *.json
+packer build *.json
+
 
 https://atlas.hashicorp.com/boxes/search
 

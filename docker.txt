@@ -2,7 +2,7 @@ Microservice
 monolithic app has frond end, DB all in one, large and complex difficult to work as a team , high failure rate
 
 smaller service mirco services , UI , security, Customers, orders, REST APIs, benifits different technology, easier to understand
-seriice, faster to deploy
+service, faster to deploy
 
 DevOPS
 different appproach

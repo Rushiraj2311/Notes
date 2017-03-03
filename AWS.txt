@@ -1,0 +1,220 @@
+AWS associate
+
+Ryan Krooneberg
+AWS - 2 years 130K
+solutions architect
+why AWS - fastest growing  cloud computingg platform 90 of compute capacity of public cloud ,
+	- largest public cloud computing
+	- more and more  are outsourcing 
+	- top paid it certification for 2016
+        - 2011 82 service, 159 12, 14 516 , 15 735, 16 1000+
+
+technology parter
+	alert logic
+	datadog
+	new relic  s3
+ 	cloudberry lab 
+
+consulting parter
+	logicworks
+	racksapce
+	accenture
+	datapipe
+manage service
+
+consulting partner - 2 staff with standard, avanced 4, premier 20 with associate , 8 with professional
+
+huge demand for  employees with certificates
+
+
+associate tier 	solution architect	developer	sysops assosciate
+professional 	solution arch prof		devops professional
+spciallity 	security  advance networking big data
+
+easy - dev associate
+	solution arch
+	sysops architect
+	security speci
+	big data speciality
+	dev ops pro
+	advance networkign sepciality
+hard	solution architect professional
+
+AWS hero
+
+AWS history
+2003 chris pinkman and  benjamin black
+suggested service of compute capacity
+SQS  launched in 2004, AWS 2006
+2007 180K developers
+2010 amazon.com move to AWS
+2012 reinvent conference replay billion doller tech company - 2017
+2013 certifications launched 2 associate , 3 prof ,  3 security
+2014 green energy
+2015 borke out revenue , 6 billion  per annume
+2016 13 billion
+2012 to 2016 - 15 billion by all other guys
+future is very bright - great investment for  future
+AWS  
+new services
+
+
+AWS 10,000 feet overview
+
+AWS global infra
+compute , storage, database, 
+IAM,, Management tools, networks, 
+Messaging and  dekstop and app  steaming
+
+
+AWS global infra
+Region -:14 Place where resources exist
+AZ - 38
+Edge location 
+
+region geographic area , consisting of more than 2 AZ, AZ are different than each other for disastor revoery
+
+singapore 2 AZ, Aus 3 AZ , 
+AZ logical data center,
+Reion is geographic area, more than 2 AZ in a region
+
+
+network
+
+edge location CDN content delivery network end point for cloud frond, large media content files  (66 edge location)
+VPC - virtual private cloud - virtual data center, VPC important exam, 
+Route53 , DNS service , look for google.com ip address , 
+CloudFront - storage section, networking section, consiists of edge location caches video, media files, 
+Direct Connect - connecting office /physical datacenter with data line to AWS (security,very reliable internet connection)
+
+
+
+
+compute
+
+EC2 Elastic Compute Clout - VM on AWS
+EC2 container service - supports docker containers ,  
+Elastic Binstalk - deploy code in to EBS analyzes code and  deploys to the AWS infra
+Lambda - serverless architecture dont go to host, code will respond to you
+LightSail - basicall out of box site , zoomla, wordpress , etc 
+
+
+
+Storage
+S3 - very old object based storage, object storage Simple storage service
+Glacier - Archive data store files for 7 years ( wait for 4-5 hours) very low cost
+EFS - Elastic File Service - Block Based storage , database, apps, share with multiple machines
+Storage Gateway - connecting S3 to on premise datacenter, VM install on primice, that connects with S3
+
+
+Databases
+RDS - Relational Database Service
+	mysql, marea, oracle, arura,  postgress sql
+DynamoDB - Non Relational DB
+	nosql database, scalable, 
+
+RedShift - Databse Storage solution by AWS copy the DB to redshift and  run reports
+
+Elasticache - cached item, top seached item, and keep in the  elastic cache, load to DB will be less (static data)
+
+
+Migration Service
+SnowBall - import export data to AWS, enterprise level TB of data to AWS , briefcase size storage copy and send back to Amazon
+SonwBall Edge - compute with snowball , AWS dataservice on premise
+DMS - Database Migration Service , migrate data to cloud, Database to other  reiog and RedShift etc, no downtime oracle database migrat to arora 
+DMS can convert with the licensing arora oracle, sql, mysql, sap asc
+SMS - Server Migration Service - VMWare to AWS service
+
+
+Analytics
+Athena - SQL service on S3 (CSV file , Json files run SQL queries on it) making objects searchable
+EMR - Elastic Map Reduce - process large amout of data , log analysis , framework is hadoop , apache spark, flunk, bigdata heavy search
+CloudSeach - serach enginge foor website managed service by AWS
+ElasiticSearch - open search freeware - to search website  angolia
+Kinesis way to stteaming and analyzing the data , store TB of data , analyze the social media stream
+DataPipeLine - service to move data one  to another , dynamoDB to S3 etc
+QuickSight - Business analytics tool rich dashboard for data analysis 
+
+
+
+Security and Idnetity
+IAM - identity access amangement
+Inspector - inspects the  security 
+certificate manager  - free ssl certificate
+directory service - active directory to AWS 
+WAF - web applicatoin Firewall - applicatin level firewall - SQL attack 
+Artifacts - documents compliance certificates and documents
+
+
+
+Management Tools
+CloudWatch - monitor performance of AWS environment disk , ram , cpu, etc
+ClodFormation - infra to code, document describes the envionment templates, prod environemnts as code , single line and deploy 50 servers multiple zone and failover, etc
+	wordpress site
+CloudTrail - audit the  resources on cloud, 
+OpsWorks - automatic deployment using chef
+Config - environment monitor auditor gives issue , alerts etc with the configuration
+TrustedAdvisor - Team of customer automating the tips of  cost optimiation , performance optimization and fault tolerant environment 
+
+
+
+AppServers
+StepFunction - brand new service , knowing what is going on the application, 
+SWF - simple work flow service Amazon fulfilment service, (Amazon eCommerce order)
+API gateway pulish the data of backend , lamdba service to discussion forum  
+AppStream - streaming application to desktop
+ElasticTranscoder - to suite alll the devices Video(screen resolution etc for all formats)
+
+
+DeveloperTools
+CodeCommit - GitHub - open or close 
+CodeBuild - compile your code, pay by minute of build
+CodeDeploy  - Deploy to EC2 instance 
+CodePipeline - track of all versoins etc test, different code in dev, uat, pre prod
+
+
+Messaging
+MobileHub - add configure and manage mobile app, push notification, mobile apps
+Cognito - easy to sign up and off using the social login - gmail instagram 
+DeviceFarm -testing on real smart phones testing in AWS datacenter
+MobileAnalytics - analyzing your mobile data
+PinPoint - enables to engage with users  - user behaviour  when to deliver the noticiation google analytics and marketing stragy
+
+
+Productivity business
+WorkDocs - Documentum
+WorkMail - emails  on cloud
+
+
+IOT
+IOT - servers way of havving thousands of device and certifications
+
+
+
+
+Desktop and APp steaming
+WorkSpaces - PC on the Cloud - thin client and connect to the AWS
+AppStream2.0 - very similar to appstream 1 
+
+
+AI
+SuperIntelligence -  NickBoastrom
+Alexa - Voice service by AWS  (LEX)
+Lex
+Polly - Text to Speech
+MachineLearning - Give AWS dataset and AWS gives you output prediict the outcomes of future descision
+Recognition - upload picture and gives you tag, mountain bike, rock etc  face recog, database of face, give percentage recognition
+
+
+Messagingg
+SNS - simple notification service , email, text message publishing HTTP, HTTPS endpints
+SQS - decoupling application queue system , message queues ,  mem
+SES - simple email service
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+Maven
+full is accumulation of the knowledge
+plugin execution framework
+used for software lifecycle management
+provides cohesive suite of plugins for dev
+	Validation
+	Compilation
+	testing
+	packaging
+	reporting
+	deployment
+
+
+
+creating a new project
+
+$mvn archetype:generate
+Choose a number: 6:
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom (2 KB at 2.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-bundles/4/maven-archetype-bundles-4.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-bundles/4/maven-archetype-bundles-4.pom (4 KB at 5.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/archetype/maven-archetype/2.0-alpha-5/maven-archetype-2.0-alpha-5.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/archetype/maven-archetype/2.0-alpha-5/maven-archetype-2.0-alpha-5.pom (9 KB at 13.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.jar (7 KB at 10.0 KB/sec)
+Define value for property 'groupId': com.rushi.app
+Define value for property 'artifactId': my-app
+Define value for property 'version' 1.0-SNAPSHOT: : 1.0
+Define value for property 'package' com.rushi.app: : jar
+Confirm properties configuration:
+groupId: com.rushi.app
+artifactId: my-app
+version: 1.0
+package: jar
+ Y: : Y
+
+http://www.slideshare.net/SmitaPrasad3/maven-basics-explained?qid=0357ef44-5d7e-4b30-86ff-8da93a29b652&v=&b=&from_search=1
+
+
+  527  mvn -v
+  528  mvn archetype:generate
+  532  mvn -v
+  
+
+  621  mvn dependency:resolve
+  625  mvn dependency:resolve
+  626  mvn dependency:tree
+  627  mvn dependency:resolve-plugins
+
+	

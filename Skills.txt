@@ -1,0 +1,36 @@
+Tools
+Responsibilities
+Collaborate with cross-department teams and evaluate suitable DevOps solutions covering build automation, deployment & test automation, release orchestration, environment management, monitoring, and production release procedures
+Work with experienced technologists and establish a suitable culture to rapidly build, test and deploying software platform
+Provide thought leadership CI/CD automation and improve team knowledge base.
+Able to install and configure DevOps tools
+Design, simplify and document DevOps procedures 
+Able to develop tools to automate the deployment flow
+Able to write scripts as needed (Shell, Powershell, Batchfiles etc)
+Rapidly pick up new technologies and assist developers to improve productivity on automation of integration needs
+Experience in getting the best of virtualised tools like OpenShift will be a plus
+Willing to take on new challenges, combine planned work with ad-hoc needs, constantly improve DevOps tool usage, confidently work in a team, explore ideas, innovative solutions and drive them quickly to production
+
+
+Exp
+
+Minimum 10-12 Years’ Experience in DevOps preferably iOS/Android Infra/Tools/Banking and Finance Industry
+Experience in tools/infrastructure  VM, Docker, TeamCity, Jenkins. Gradle, Git, Bitbucket, Cruicible/Sonar, Appium, Selenium, Nexus, Artifactory, JIRA, Confluence will be preferred
+Experience in iOS/Android mobile app deployment infrastructure (Application Loader, xCode build agents, AppStore/Playstore publishing flow, APK/IPA code-signing, certificates, provisioning profiles etc.,) will be a huge plus.
+Experience in Mobile App Automated Testing mechanisms
+Substantial experience in Linux/Unix and/or Widows OS
+Understand the fundamentals of iterative development
+Comfortable with rapidly changing technology and bring strong continuous delivery skills as well as working with shifting timelines
+Education
+Bachelor / Master Degree from an accredited college or university with a concentration in Computer Science or an IT- related diploma (or equivalent)
+
+
+
+https://www.linkedin.com/in/sanjiv-kumar- 
+
+
+infrastrucure aws, azure,openstack, vmware, 
+provisioning vagrant, cloudformation, chef ,ansible, puppet
+RT EC2/S3,  ceph,  docker, kubernetes, rkt ,vpc
+orchamange kub	 mesos , ECS etcd, consul 
+
