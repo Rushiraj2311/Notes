@@ -1,0 +1,163 @@
+https://www.slideshare.net/alimenkou/agile-way-to-first-iteration?qid=05ba4df4-9038-445e-94ac-9b4cb61f2bd2&v=&b=&from_search=2
+
+
+product owner - idea
+product backlog with priority gets created by the product owner
+PGM gets the ball moving from getting sprint planning
+Focus Master/Iteration master gets the spring backlog 
+
+
+when it is simple
+Simple Application
+CURD app
+revese engineering possible with existing apps
+just another app which is already in the market
+cool idea and simple product
+
+zero iteration
+prepare all the environment
+prepare item for first iteration
+before first iteration
+training new tools
+establish team velocity
+even earning and some business value
+
+
+real world
+backlog not ready so customer is not ahead of developers
+no UI common design
+architecture design doesnt project requiremetns
+functionality ready but product dont satisfy project requirement
+lot of significal rework
+
+
+what we  do in agile
+Refactoring
+simple desiggn
+yagni
+dry principle
+Just In Time
+
+
+Agile Planning
+
+Market Research
+Stratagy -  Portfolio - Product - roadmap
+
+Agile Project planning
+Product - roadmap - Release - Iteration - Day
+
+
+what we need to start with
+Concept
+Stories
+Budget ( teams that have iteration plan from stories and acceptance test)
+
+
+Real transformation
+concepts -> Ideas -> Main Features -> Feature and Design -> User Stories
+
+Product Vision
+help everyone to be on same page
+collective understanding
+define features
+
+ways
+	product workshops
+	users roles andd function game
+	UI prototyping
+
+
+We understand
+
+who is customers
+compatitors
+product category 
+key features and product
+main features users and system
+main user activities
+
+
+
+agile approach
+actors , roles and goals list
+	white board , snapshot , spreadsheets
+	personas for each role (name lifecycle , image etc)
+
+paper and other light weight prototyping
+	mockup tools cheap  
+	helps communicate effectively
+
+user testing
+	execution of scenarios on prototypes
+	get feedback to avoid mistakes
+
+
+Risk Management
+Risk meeting to identify the risks
+store main risk and put impact with probability
+brainstorm for high right corner risk
+make sure revisit and during development
+
+
+Define architecture
+understand key components flows andd technology
+reduce technology shcedule risk
+prove main assumeption (what you expect)
+
+
+agile approach
+use informal style docs
+validate main des with architectural prototype
+mock unndeeded componentes and servicies
+
+
+testing stratagy
+testing stratagy helps reduce time  of test automation
+select testing framework and tools for each kind of test
+define roles and responsitilty off testing team
+
+
+acceptance test
+define accepatance critaria during each user story PO , QA product owner and QA
+creatae acceptance tests ( PO, QA , Dev)
+implement acceptance tests (QA , Dev)
+use them as DONE criteria
+at the end ot the sprint all acceptance must  pass
+
+
+Release planning
+devide functionality by importance
+must have important, and good to have
+estimate features
+dont pull all top priorities in first release
+story mapping
+
+colored backlog
+feature (green)
+architect feature(orange)
+tech ( black)
+defect (red)
+
+
+hiring business resources
+Product owner
+ strong vision, understand users, have skills knows facts
+ collobrative skills ,descisive, conceptual thinker
+
+wrong po can
+ slow down project ,  lead team to wrong direction
+
+Hiring technical team 
+need senior staff early
+  defines the estimates
+  defines architecture
+   prepares the POC
+  helps hire rest of the team
+
+full team hiring should wait for budget and architectural descisions
+ identify the skills
+ some  time should  be spent on  to bring up  speed on vision
+ team trainings  on agile and engineering  practices
+
+
