@@ -1,0 +1,249 @@
+AWS Databases
+
+Databases
+	RDS 
+	DynamoDB 
+	ElasticCache
+	RedShift (DW)
+	DMS (databse migration service)
+
+Relational Database
+	traditional spreadsheet
+		database
+		tables
+		row (workbook)
+		fields (data)
+
+ID is number, name text, gender M/F
+Releational database (SQL, oracle, mysql, postgress , aurora, mariadb)
+Non releational database - Database , (couchdb, mongodb, cloudant, cloudera)
+	DynamoDB (keyvalue pair, documents)
+	
+	Database
+		collection	table
+		document	row
+		key value pari	fields 
+
+
+NoSQL database - very new and emerging technology, supported by SQL server, 
+	Intelligance orclae hypersion, SAP netWeaver , cognos, JasperSoft
+
+
+OLTP - online transaction processing - transaction process
+OLAP - online Analytics Processing (where analyse information - net profile in a region for a product) 
+
+scaleout - OLTP - place new orders, scaling will be hard, Datawarhouse - copy of database OLAP ( different architecture)
+
+ElasticCache - webservice that makes it easy to deploy  , operate and scale an in memory cahce in cloud (memcached, Redis)
+
+DMS = database migratoin service - database migration service, migrate product database on AWS, AWS manaages the migration , DB transfrer, compress, and transfer, migration process gets replicated, 
+	DMS - schema migration 
+		Oralce to MySQL
+		Oralce to Aurora
+
+
+AWS database summery 
+	RDS - OLTP
+		SQL , MYsql, postgres, oracle , aurora, mariadb
+
+	RDBMS
+		DynamoDB,
+
+	Redshift 
+		OLAP
+	Elastic Cache
+		memcacheD
+		RedIS
+	DMS
+
+
+
+Database Backups
+There are two backups for AWS, Automated and Database snapshorts
+automated backups allows to recover your DB to any point of time with a retention time (35 days) , daily snapshot with transation logs, Recovery happens like earlis available sanpshot with transaction logs
+Automated bnackup is default, equal size of RDS instance, 
+backup is defined window, during backup window IO may be suspended (elivated latency) not being utilized
+DB snapshots - manually, user initated they stored even after the RDS is gets deleted, 
+Restoring backup - manual snapshot/backup with new endponts
+
+encryption encryptoin at REST, with KMS automatic backups
+
+Read replicas - exact copy of the database, failover to different avaialbility zone, very heavy load, change the connectin strings for different EC2 , 
+	read replicas to read replicas - scaling up 
+
+
+read replica - read only from prod DB, primarly read heavy 
+   mysql, postgress , 
+
+read replicas - used for scaling not for DR
+	must have automatic backup turned on 
+	max 5 replica of any DB
+	read replica of read replica - asyncronous ( dealy latency)
+	each will have DNS end point
+	can not hav eread replica  that have multi AZ
+	you can create read replica of multi AZ turned on database however
+	slected DB , instance action read replica , t2 microo acloud read rep, AZ, 
+
+
+Dynamo DB VS RDS
+	dynamo offers push button scaling you can sclae your DB on fly wihtout any DB time (compare to RDS replica)
+
+	RDS is not easy to have for bigger instance size or to add a read replica
+
+
+DynamoDB
+	how to you scale it
+	fast and flexible nosql db for all applicatoin need consistnet , single digit millisecond  supports both document and key value flexible modle for iot, gaming, ad tech, iot, other applications
+	stored on SSD
+	spared across 3 distinct data centres
+	eventual consistancy read
+		all copies of data read in a second, repeating short time updated dta
+	strongly consistent read
+		reflects all writes that recieved successful response prior to read
+
+	
+profisioned through cpacity
+	write through put is 0.0065 D for 10 nit
+	read through put - 0.0065 per hour every 50 unit
+	
+	25 cent per month/GB
+
+
+3 GB per day
+
+1 million spread write per day equls (24*60*60) means 11.6 writes per second
+
+dynamo DB write capacity 12 units needed
+for read 12 unit read units
+with read capacity unit yu are billined in blocks of 50  cpaicty unit you are bluild in block s of 10
+
+write capacity unit - 0.1872
+read 0.0374
+
+
+dynamo DB table
+	name 			aclougurunosql
+	primary key  		student id
+
+`1 unit or read 1 write 0.66 / month
+
+manage write 
+reserved capacity - 1 to 3 year contract
+dashboard - table - items id and name
+	id   nmae		surname
+	101 rushi
+	102 Kushbu 		jones
+	
+
+filter studuent surname jones
+
+provision capacity - 5*5 - 3.29/month
+
+
+
+Redshift
+	Dataware house - fast powerful , managed petbyte scale, 0.25 per hour no commitments to $1K per terabye per year less than 10th of other warehousing solutions
+	
+	OLAP - online analytics processing 
+		digital radio product
+	
+	adding up columns and brigng together
+	columns - adding and joining the data together
+    
+	datbase layer and infralayer
+
+redshift configuration
+	single node (160 GB)
+	multi node configuraiton 
+		leader node(mange client conn and recieveds query)
+		compute node (store data and perform queries and computations) upto 128 compute nodes
+	
+	10 times faster
+		storing data by colum rather than rows
+		colum based is very easy for large databse
+		data stored sequential
+		needs fewr IO greatly improving performance
+		stores sequential
+		doesnt requier indexses and views
+		loading data to talbe samples data and selects most app compression scheme
+		MPP - massiv parallel processing - multiple nodes as the data grows
+		
+	pricing
+		compute node hours 1 unit per node per hour 
+		for 3 nodes 2160 hous (3 node *24 hours*30 days)
+		backup 
+
+	security
+		encrypted intransit SSL
+		at rest AES 256
+		Default takes care of KMS
+			mange your own keys thorugh HSM
+		
+	
+	Availability
+		currently in 1 AZ
+		can restroe snapshot to new AZ in event of outtage
+
+
+
+ElasticCache
+	
+	two engine of elastic cache
+	
+	elastic cache is a web service that makes easy to deploy , oerate, scale in memory cache in cloud
+	improve performance from fast manged , in memory cahce, instead of slower disk based database 
+	significally improve latency ( social networking, gaming , media , sharing and Q&A protals) or compute intensive recommendation engine
+	cachine improves app perofrmance by storing critical pieces of data in memory - that can include resutl of IO intensive database queires of compute intnesive calcuations
+
+	two type of engine
+	
+	Memcached	
+		widely adopted memory cache sys eleastic cahce is compliant with memcached so populatr tool will work with this service
+	Redis
+		open soucre versoin of Key value store that supports data strucutre sorted and lists , supports master slave replicatin with multi AZ the can be used to remove redundancy
+
+exam
+	which service to use for alleviate load elastic cache (redshift - management keep running heary)
+	dynamo DB
+	for OLAP
+
+
+Aurora
+	database engine by Amazon
+	mysql compliant databae RDBMS
+	Aurora 5 time better performance 1/10 of other oracle database
+
+	scaling
+		10 GB and increment in terms of 10 GB til 64 TB(autoscaling)
+		compute till 32 vCPU 0 and 244 GB mem ( auto button without reboot)
+		2 copies of database in 3 AZ ( 6 copies of Data)
+		lost of 2 data of write , 3 read availability
+		self healing - repair automatic
+	replica - 2 type of replica
+		autora replica
+		arora replica (15)
+		mysql read replica (5)
+		
+auroa 
+	R3 large - 2 cpu, 15 GB
+	multi AZ
+	failover - 15 replicas 
+	VPC
+	pulic accessbile
+	cluster identifies - acloudguru-cluster 
+	
+	
+	
+	
+	
+			
+		
+
+	
+
+	
+
+
+
+
+	
