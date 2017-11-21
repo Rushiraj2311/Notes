@@ -1,0 +1,914 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 HelveticaNeue-Medium;
+\f3\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red203\green35\blue57;\red255\green255\blue255;\red27\green31\blue34;
+\red70\green137\blue204;\red23\green23\blue23;\red202\green202\blue202;\red194\green126\blue101;\red79\green123\blue61;
+\red38\green38\blue38;\red41\green101\blue168;\red242\green242\blue242;\red234\green233\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c84314\c22745\c28627;\cssrgb\c100000\c100000\c100000;\cssrgb\c14118\c16078\c18039;
+\cssrgb\c33725\c61176\c83922;\cssrgb\c11765\c11765\c11765;\cssrgb\c83137\c83137\c83137;\cssrgb\c80784\c56863\c47059;\cssrgb\c37647\c54510\c30588;
+\cssrgb\c20000\c20000\c20000;\cssrgb\c20000\c47843\c71765;\cssrgb\c96078\c96078\c96078;\cssrgb\c93333\c93333\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15420\viewh15640\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Docker\
+\
+\
+Docker container run \'97publish 80:80 nginx\
+\
+Downloads the image nginx from docker hub\
+Starts new container from that image\
+Opened port 80 on host ip\
+Routes traffic to container ip on 80\
+\
+79  docker container run --publish 80:80 nginx\
+\
+Docker runs container on the local host on port 80 with name nginx from docker hub\
+Foreground mode\
+\
+\
+  180  docker container run --publish 80:80 --detach nginx\
+\
+Docker runs the same container in the background mode to not block the terminal\
+  181  docker ps\
+  182  docker container ls\
+\
+Shows all the running container with their IDs .\
+\
+  183  docker ps\
+  184  docker container stop 212\
+\
+\
+Stops the container of the id 212*\
+\
+  185  docker container stop  baa\
+  186  docker ps\
+\
+  188  docker container run --publish 80:80 --detach --name webhost nginx\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Runs the nginx and detaches it from the prompt to go in background\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+  189  docker ps\
+  190  docker ps\
+  191  docker container logs webhost\
+\
+Shows the logs of the container web host\
+\
+  192  ifconfig\
+  193  ifconfig | more\
+  194  docker container logs webhost\
+  195  docker container logs webhost\
+  196  docker container top\
+  197  docker container  top webhost\
+  198  docker container --help\
+  199  docker ps\
+  200  docker container rm 151\
+  201  docker container rm -f webhost\
+\
+Stops and removes the container , in case f is not given will give an error that the container is still on\
+\
+  202  docker ps\
+\
+\
+\
+\
+Started nginx , mysql and httpd containers\
+\
+\
+noonah7aeth7quuuMohWe0ieJ2IotaiR\
+\
+222  docker container run --publish 3306:3306 --name mysql --detach mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes\
+  223  docker container run --publish 3306:3306 --name mysql --detach  -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql\
+  224  docker container run --publish 3306:3306 --name mysql1 --detach  -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql\
+\
+test them with curl Stop all of the and remove them\
+\
+236  curl localhost\
+  237  curl localhost:8080\
+  238  curl localhost:3306\
+  239  docker container stop httpd\
+  240  docker container stop nginx\
+  241  docker ps\
+  242  docker container stop mysql\
+  243  docker ps -a\
+  244  docker container rm  nginx\
+  245  docker container rm mongo\
+  246  docker container rm httpd\
+  247  docker ps -a\
+  248  docker container  rm baa\
+  249  docker container rm c80\
+  250  docker container ps a\
+  251  docker ps -a\
+  252  docker rm 082\
+  253  docker ps -a\
+  254  docker container sotp mysql1\
+  255  docker container stop mysql1\
+  256  docker container rm mysql1\
+  257  docker ps -a\
+  258  history\
+\
+\
+Docker container top \
+\
+Give s list of process of the container\
+\
+\
+Docker container inspect\
+\
+Gives  details of how the container was started\
+\
+Docker container stats\
+\
+Gives top kinda view of the running container you need to map the container id to actual view it\
+\
+\
+266  docker container stats\
+  267  docker container inspect  mysql\
+  268  docker container stats\
+  269  docker ps\
+  270  docker container top mysql\
+\
+Run some other command on the docker\
+\
+docker container run  -it --name proxy nginx bash\
+\
+Exit then the container is stopped you need to remove the remains using docker container rm XXX\
+\
+\
+Docker container run -it  \'97 run new shell \
+\
+Docker container exec -it bash  \'85start a new process in the container\
+\
+\
+Different the linux distros like alpine just 4 MB without the bash just sh\
+\
+\
+Install something on the linux ubuntu\
+\
+docker container exce -it mysql bash\
+  285  docker ps\
+  286  docker container  exec -it mysql bash\
+  287  docker container ls\
+  288  docker pull alpine\
+  289  docker image ls\
+  290  docker container run -it alpine bash\
+  291  docker container run -it alpine sh\
+\
+\
+\
+Docker port\
+\
+Rivew of the docker container run -p \
+\
+Local and dev testing networks usually just work\
+\
+Quick port check with\
+\
+Docker container port <container>\
+\
+Understand how the network packets work around docker\
+\
+\
+L-156134775:~ ru372091$ docker container port webhost\
+80/tcp -> 0.0.0.0:80\
+\
+ 410  docker container  run -d --name new_nginx nginx  --network my_app_net\
+  411  docker rm -f new_nginx\
+  412  docker container run -d --name new_nginx --network my_app_net  nginx\
+  413  docker ps\
+  414  docker network ls\
+  415  docker network inspect  my_app_net\
+  416  docker network ls\
+  417  docker ps\
+  418  docker network  connect 40550e10819e 5f8457f1d2db\
+  419  docker network  connect 40550e10819e 2267b0e847ad\
+  420  docker container inspect 2267b0e847ad\
+\
+Show networks\
+\
+Docker network ls\
+Docker network is\
+Adding the network to container\
+Inspecting the container after and before\
+Creating a new network\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+DNS lookup and elastic search to have multiple host for\
+\
+\
+\
+\
+Create a new network for the container called dude\
+\
+407  docker network  create dude\
+\
+Get two containers running for the elasticsearch image \
+\
+  408  docker container run -d --net dude --net-alias search elasticsearch:2\
+  409  docker container run -d --net dude --net-alias search elasticsearch:2\
+  410  docker container ls\
+\
+Get nslookup done for the search it will give two entries as there are two containers running\
+\
+  411  docker container run --rm --net dude alpine nslookup search\
+\
+Now try doing a curl on the port 9200 and overtime you will get response from different host\
+\
+  412  docker container run --rm --net dude centos curl -s search:9200\
+  413  docker container run --rm --net dude centos curl -s search:9200\
+  414  docker container run --rm --net dude centos curl -s search:9200\
+  415  docker container run --rm --net dude centos curl -s search:9200\
+\
+\
+============\
+Docker images\
+\
+Building block of containers\
+What is an image\
+	app binaries and dependancies\
+	metadata about image data and how to run image\
+	off def :: - an image is ordered collection of root filesystem changes and the corrosponding execution parameters for use within a container \
+			runtime\
+	not an complete os , no kernel, modules and drivers\
+	small as one file\
+	big image like ubuntu, apt, apache, php and other installed\
+Using docker hub registry\
+Managing local images cache\
+Building our own images\
+\
+=============================\
+\
+\
+Docker images\
+Imjages are made up of stem changes and metadata\
+Each layer is uniquely stored once on host\
+Saves space on host and transfer time to pull and push\
+Container is just a single read/wrte layer on top of the image\
+History and inspect commad\
+\
+ 432  docker history mysql\
+  433  docker history mysql:latest\
+  434  docker image inspect mysql\
+  435  history\
+\
+Docker image inspect gives you the metadata of the image\
+What default port\
+Shell\
+Default command\
+Architecture etc\
+\
+======================================\
+\
+Push the images in your repository\
+\
+docker image ls\
+  441  docker image tag nginx rushiraj2311/nginx\
+  442  docker image tag --help\
+  443  docker image ls\
+  444  docker image push rushiraj2311/nginx\
+  445  docker login\
+  446  docker\
+  447  docker logs\
+  448  docker logs mysql\
+  449  docker  login\
+  450  cat .docker/config.json\
+  451  docker tag rushiraj2311/nginx rushiraj2311/nginx:testing\
+  452  docker push rushiraj2311/nginx:testing\
+  453  docker image ls\
+\
+\
+Properly tagging images\
+Tagging images for upload to docker hub\
+How tagging is related to image id\
+The latest tag\
+Logging into docker hub from docker cli\
+\
+Private repo first create and then upload\
+\
+\
+============================================\
+\
+Craeting image from image\
+\
+\
+487  vi Dockerfile\
+  488  vi index.html\
+\
+Added the index html file to the default nginx file\
+\
+  489  docker image build -t nginx-with-html .\
+\
+Do the build of docker image\
+  490  docker run -p 80:80 nginx-with-html\
+\
+Run the local container\
+\
+  491  docker image ls\
+  492  docker image tag --help\
+  493  docker image tag  nginx-with-html:latest rushiraj231/nginx-with-html:latest\
+\
+Run the docker image and retag it\
+\
+  494  docker image ls\
+  495  history\
+\
+And you can upload it in your repository\
+\
+\
+===================================================\
+\
+\
+\
+\
+Containers persisant store\
+\
+Defining the problem of persistent data\
+Key concept of immutable ephemeral\
+Data voulues\
+Bind volumes\
+Assignments - hosts and new code \
+\
+Understanding of running container\
+\
+Container immutable and ephemeral - \
+Only redeploy container never change\
+No changing required , for config change re deploy the container\
+\
+Unique data - database , key value pair, or environment data \
+Separation of concerns - \
+Recreating an updating the container ,  with the same data\
+Perserving the data of the container \'97 (remove)\
+\
+\
+Persistent data - old servers, old apps persistent \'97 now ever changing and auto scaling it needs\
+\
+\
+Data volumes and bind mounts\
+Volumes - make special location outside the container UFS\
+Bind mount - link container path to host path\
+\
+\
+++++++++++++++\
+\
+Lifespan of container -\
+\
+Persistent Data - volume\
+\
+Volume command in the docker file \
+Volume needs manual deletion - to preserver the data even after keeping it\
+\
+\
+\
+docker image inspect mysql\
+\
+Inspect the image and see the volume it mounts\
+\
+Create a mysql and see what it actually creates in volume\
+  527  docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true  mysql\
+  528  docker container ls\
+  529  docker container inspect  mysql\
+  530  docker volume ls\
+  531  docker volume inspect fb07\
+  532  docker volume  inspect 0564\
+  533  docker volume  inspect c786\
+  534  docker volume inspect 0564c9590ac8fb31eb1beedd39bb0e7ee049246fc0b194429f8a19c473df8b74\
+\
+You can mount a volume by giving -v option \
+\
+  535  docker container run -d --name mysql2 -v mysql-db:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true  mysql\
+  536  docker volume ls\
+  537  docker container stop mysql\
+  538  docker container stop mysql2\
+  539  docker container ls\
+  540  docker container ls -a\
+  541  docker volume  ls\
+  542  docker container  rm -f mysql mysql2\
+  543  docker volume ls\
+  544* docker container run -d --name mysql2 -e MYSQL_ALLOW_EMPTY_PASS\
+  545  docker volume ls\
+  546  docker volume inspect mysql-db\
+  547  docker volume  create  --help\
+  548  history\
+\
+After stoping the volume you can see the volume is already present . You can also view them\
+\
+\
+\
+===========================\
+\
+Bind mounting\
+Maps host file or directory to a container file or directory\
+Basically two location pointing to same files\
+Again skis UFS and preservers the file, host overwrites any in container\
+Can\'92t use in docker file , must be at docker run\
+\
+Run -v /user/bert/stuff:/path/container (Mac/linux)\
+Run -v //c/users/bret/stuff:/path/contaier (window)\
+\
+\
+\
+run a container like below\
+\
+docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx\
+\
+This will mount the PWD of the terminal Mac to the /user/share/nginx/html and the home page will be picked up from the home directory, you an change it and instantly you can view the things changing on you website.\
+\
+\
+=========================================================\
+\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f1 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 VOLUME\cf4 \strokec4  /var/lib/postgresql/data\
+\
+\
+\
+docker container run -p 80:4000 -v $(pwd):/site bretfisher/jekyll-svev\
+\
+Adding bind mount\
+\
+======================================================================\
+\
+Docker compose\
+Yams file \'97\
+Containers \
+Networks \
+Volumes\
+\
+\
+CLI took docker-compose used to local/dev/test automation to use in the yams file\
+\
+\
+Docker-compose file - own vision 1,2, 2.1, 3, 3.1 \
+\
+Yams file can be used for local machine\
+Docker swarm - 1.13 in production with swarm\
+\
+Gerat help\
+\
+Docker-compose -f\
+\
+\
+The below example create a Jekyll website with the above command only\
+Also mounts the directory as the volume for this container\
+Exposes port\
+Defines the image name to be used for container start up\
+\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf5 \cb6 \strokec5 version\cf7 \strokec7 : \cf8 \strokec8 '2'\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf9 \cb6 \strokec9 # same as \cf7 \cb1 \strokec7 \
+\cf9 \cb6 \strokec9 # docker run -p 80:4000 -v $(pwd):/site bretfisher/jekyll-serve\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf5 \cb6 \strokec5 services\cf7 \strokec7 :\cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf7 \cb6   \cf5 \strokec5 jekyll\cf7 \strokec7 :\cb1 \
+\cb6     \cf5 \strokec5 image\cf7 \strokec7 : \cf8 \strokec8 bretfisher/jekyll-serve\cf7 \cb1 \strokec7 \
+\cb6     \cf5 \strokec5 volumes\cf7 \strokec7 :\cb1 \
+\cb6       - \cf8 \strokec8 .:/site\cf7 \cb1 \strokec7 \
+\cb6     \cf5 \strokec5 ports\cf7 \strokec7 :\cb1 \
+\cb6       - \cf8 \strokec8 '80:4000'\cf7 \cb1 \strokec7 \
+\
+\
+============================\
+\
+Docker swarm\
+\
+This feature in docker is ginen to manage production activities and multimode containers\
+\
+By default the swarm mode is off you need to init it\
+\
+ You can enable this like below\
+docker swarm init\
+ docker info\
+\
+You can check the status of the swarm like this\
+\
+  713  docker swarm status\
+\
+There are many commands few of there as per below\
+\
+  714  docker swarm  ca\
+\
+This will list down the nodes that are in the docker swarm by default only one is there as we are having only one node\
+\
+  715  docker node ls\
+  716  docker node  --help\
+  717  docker service --help\
+\
+Lets create a docker service to create the ping to google DNS \
+  718  docker service create alpine ping 8.8.8.8\
+  719  docker service ls\
+\
+\
+This will create a service and will start worker as per defined in the command\
+  720  docker service ps zen_varahamihira\
+  721  docker container ls\
+\
+You can see the container running as per you see after you run the docker run\
+\
+  722  docker service update kgtunaeglu9h --replicas 3\
+\
+Lets try and increase the number of workers of this service to 3, it will automatically spawn the new two worker nodes and will start them\
+  723  docker service ls\
+\
+Will show the 3 workers /containers running\
+  724  docker container ls\
+\
+This will list all of them\
+\
+  725  docker service ps\
+\
+check the service status \
+  726  docker service ps kgtunaeglu9h\
+  727  docker update --help\
+\
+There is a lot more you can do in service like increaser remove etc\
+\
+  728  docker service update --help\
+  729  docker container ls\
+\
+Lets remove one of the worker by killing and see if it comes back\
+\
+  730  docker container rm -f zen_varahamihira.1.mc68dffi9p1a8zr8fbog0zvub\
+  731  docker service ps zen_varahamihira\
+\
+You would have seen that the node is again back after you remove it\
+\
+\
+  732  docker service  rm zen_varahamihira\
+\
+Once you remove the service it takes some time to down all the workers \
+\
+  733  docker container ls\
+  734  docker container ls\
+  735  history\
+\
+==========================================\
+\
+Docker swarm in action\
+\
+Create 3 nodes\
+\
+Docker-machine create node1\
+Docker-machine create node2\
+Docker-machine create node3\
+\
+\
+Docker-machine ssh node1\
+Docker-machine ssh node2\
+Docker-machine ssh node3\
+\
+\
+Login to the node 1 with ssh\
+\
+Initialise the dockerswarm , as we need to publish on which node the docker swarm will run we need to do init with ip \
+\
+  docker swarm init\
+   2 docker swarm init --advertise-addr 192.168.99.100\
+\
+\
+There would be a key generated copy and paste this to the other two nodes and join the swarm\
+\
+docker@node3:~$ docker swarm join --token SWMTKN-1-1qdwu8dxheblklv6lxagjztf22hf55u6bp2ybs9whttzs1gb89\
+-0znofwym4uf2nyl1ypu2ldf3p 192.168.99.100:2377\
+\
+\
+After you join the node you can see all the nodes listed in the node ls\
+   3 docker node ls\
+\
+To give the other nodes permission to do list you can make or upgrade their role\
+\
+   4 docker node update --role manager node2\
+   5 docker node ls\
+   6 docker node update --role manager node3\
+   7 docker node ls\
+\
+Try creating a service from the manager node with 3 replicas of the ping to google DNS \
+   8 docker service create --replicas 3 alpine ping 8.8.8.8\
+\
+You can view the status of the service with below\
+\
+   9 docker service ls\
+  10 docker node ps\
+\
+To view the status on individual node you can specify the node itself\
+\
+  11 docker node ps node2\
+  12 docker ps node3\
+  13 docker node ps node3\
+\
+To view the service status you can give the service name\
+\
+  14 docker service ps heuristic_wright\
+\
+You can create an overlay network as we were creating earlier\
+\
+  15 docker network create --driver overlay mydrupal\
+  16 docker network ls\
+\
+Create a service for database that will create the PSQL service\
+\
+  17 docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD=mypass postgres\
+  18 docker service ls\
+  19 docker service ps sql\
+  20 docker service ls\
+  21 docker service ps psql\
+\
+You can view the logs at here\
+\
+  22 docker container logs psq1.1.22bfdgn65oh9\
+  23 docker container ls\
+  24 docker container logs psql1.1.3dbc7dece9ec\
+\
+  25 docker container logs psql.1.22bfdgn65oh9fpabm1z275eqs\
+\
+You can crate a service called Drupal and expose port to 80\
+\
+  26 docker service create --name drupal --network mydrupal -p 80:80 drupal\
+  27 docker service ps\
+  28 docker service ls\
+\
+To watch the service you can give  watch command that can view the status every two seconds\
+\
+  29 watch docker service ls\
+  30 docker service ls\
+\
+To remove the earlier service you can write rm -f service command\
+\
+  34 docker service rm heuristic_wright\
+  35 docker service ps\
+  36 docker service ls\
+  37 docker image ls\
+\
+View the status of the service how it is running and where it is running\
+  38 docker service ps drupal\
+  39 docker service ps psql\
+  40 ifconfig -a\
+  41 ifconfig Ethan\
+\
+To view the node listing you can view like this\
+\
+  42 docker swarm node ls\
+  43 docker swarm node\
+  44 docker swarm node ls\
+  45 docker swarm node ps\
+  46 history\
+  47 docker node ls\
+\
+You can inspect the service like below, will show you the parameters related to the that node\
+\
+  48 docker service inspect Drupal\
+  49 history\
+\
+\
+Now you can view the service from any of the ip of any node it would be visible from any of the network.\
+\
+========================\
+\
+Docker secrets\
+\
+To mange password and keep the secrets\
+\
+Create a file with user name\
+\
+Docker secret create file neame \
+\
+ 124 vi psql_user.txt\
+ 125 ls\
+ 126 pwd\
+ 127 cd srv\
+ 128 ls\
+ 129 vi psql_user.txt\
+ 130 docker sercret create psql_user psql_user.txt\
+ 131 docker secret create psql_user psql_user.txt\
+ 132 docker secret rm psql_user\
+ 133 docker secret create psql_user psql_user.txt\
+ 134 echo "myDBpassWORD" | docker secret create psql_pass -\
+ 135 docker secret inspect psql_user\
+ 136 docker secret inspect psql_pass\
+ 137 pwd\
+\
+Create service to start the sql service\
+ 138 docker service create --name psql --secret psql_user --secret psql_pass -e POSTGRES_PASSWORD_FILE=/run/secrets/psql_pass -e POSTGRESS_USER_FILE=/run/secret/psql_user_postgres\
+ 139 cd /run\
+ 140 ls\
+\
+Docker except will Crete the secrets in the /run/docker/secret\
+\
+docker exec -it psql.1.zzmznrcsebdqyxpe8fi71m482 bash\
+  34 ls\
+  35 docker container ls\
+  36 docker log psql.1.zzmznrcsebdqyxpe8fi71m482\
+  37 docker logs psql.1.zzmznrcsebdqyxpe8fi71m482\
+  38 docker service ps\
+  39 docker service ls\
+\
+\
+==============================\
+dockerhub\
+\
+To keep private or public images of docker containers\
+You can pay for premium features\
+You can have web hook to do auto build.\
+You also have a reverse web hook to specify the code commit and run a build on top of it\
+You also can watch for the FROM images if they change run/triggeer a build and certify your build if its running on top of it\
+You can keep one private and pay for rest of the repositories \
+\
+====================\
+\
+Docker store\
+A store to purchase images from the docker which are certified by docker\
+There can be free as well as the permium softwares that requires licences\
+like a mac store to buy the softwares,  docker hub is to store the images of container.\
+Certfied images are kept here.\
+\
+\
+==================================\
+Dockercloud\
+Not a cloud hosters\
+Web based orchestration system for docker swarm\
+Create stacks and nodes on the digital ocean and Azure\
+Docker CLI can be used for the items managed by here\
+Dockerhub - \
+Dockercloud - you can add the test and deployment (CI platform )\
+Build configure automated builds\
+Private images - security scan\
+Nginx vulnerability in the tags you can see the vulnerabilities (CVE vulnurabilities and exposure)\
+\
+\
+=============\
+\
+Running docker registry\
+Private image registry for your network\
+Part of docker/distribution GitHub repo\
+The de facto in private container registries\
+At its core a web api and storage system written in go\
+Storage support for local, s3, azure, Alibaba, google, opesntack\
+\
+================\
+\
+Running docker registry\
+\
+Looking section\
+TLS\
+Storage cleanup via garbage collection\
+Registry mirror\
+Failover locally\
+\
+=================================\
+Running a private registry\
+\
+Rung registry on port 5000\
+Retag some image and push it to new registry\
+Remove that local image from cache and pull it from new registry\
+Re create registry using a bind mount and see how it stores data\
+\
+====================\
+How to create own registry for the locally\
+\
+\
+Get any small image\
+\
+ 145 docker pull hello-world\
+\
+Run that container\
+\
+ 146 docker run hello-world\
+\
+Now tag this registry on the local registry running locally\
+\
+ 147 docker tag hello-world 127.0.0.1:5000/hello-world\
+ 148 docker image ls\
+docker push 127.0.0.1:5000/hello-world\
+\
+Remove the hello-world to see if it downloads from local registry\
+\
+ 115 docker image rm hello-world\
+ 116 docker image rm 127.0.0.1:5000/hello-world\
+ 117 docker image ls\
+ 118 docker image remove 127.0.0.1:5000/hello-world\
+ 119 docker container ls\
+ 120 docker container ls -a\
+ 121 docker container rm 142\
+ 122 docker container ls\
+ 123 docker container ls -a\
+ 124 docker image remove 127.0.0.1:5000/hello-world\
+ 125 docker pull 127.0.0.1:5000/hello-world\
+ 126 docker container kill registry\
+ 127 docker container rm registry\
+\
+Create a volume using -v \
+ 128 docker container run -d -p 5000:5000 --name registry -v $(pwd)/registry-data:/var/lib/registry registry\
+\
+\
+Check what this folder contains\
+\
+ 129 cd registry-data/\
+ 130 ls\
+ 131 docker image ls\
+ 132 docker push 127.0.0.1:5000/hello-world\
+\
+\
+\
+\
+\
+\
+===================\
+\
+\
+To host a secure registry\
+\
+\
+\pard\pardeftab720\sl780\sa200\partightenfactor0
+
+\f2\fs72 \cf10 \cb3 \strokec10 Part 2 - Running a Secured Registry Container in Linux\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f3\fs28 \cf10 We saw how to run a simple registry container in Part 1, using the official Docker registry image. The registry server can be configured to serve HTTPS traffic on a known domain, so it\'92s straightforward to run a secure registry for private use with a self-signed SSL certificate.\
+\pard\pardeftab720\sl660\sa200\partightenfactor0
+
+\f2\fs60 \cf10 Generating the SSL Certificate in Linux\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f3\fs28 \cf10 The Docker docs explain how to\'a0{\field{\*\fldinst{HYPERLINK "https://docs.docker.com/registry/insecure/#/using-self-signed-certificates"}}{\fldrslt \cf11 \strokec11 generate a self-signed certificate}}\'a0on Linux using OpenSSL:\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf10 \cb12 mkdir -p certs \
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key -x509 -days 365 -out certs/domain.crt\
+\cb13 Generating a 4096 bit RSA private key\
+........++\
+............................................................++\
+writing new private key to 'certs/domain.key'\
+-----\
+You are about to be asked to enter information that will be incorporated\
+into your certificate request.\
+What you are about to enter is what is called a Distinguished Name or a DN.\
+There are quite a few fields but you can leave some blank\
+For some fields there will be a default value,\
+If you enter '.', the field will be left blank.\
+-----\
+Country Name (2 letter code) [AU]:US\
+State or Province Name (full name) [Some-State]:\
+Locality Name (eg, city) []:\
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Docker\
+Organizational Unit Name (eg, section) []:\
+Common Name (e.g. server FQDN or YOUR name) []:127.0.0.1\
+Email Address []:\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f3\fs28 \cf10 \cb3 If you are running the registry locally, be sure to use your host name as the CN.\
+To get the docker daemon to trust the certificate, copy the domain.crt file.\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf10 \cb12 mkdir /etc/docker/certs.d\
+mkdir /etc/docker/certs.d/127.0.0.1:5000 \
+cp $(pwd)/certs/domain.crt /etc/docker/certs.d/127.0.0.1:5000/ca.crt\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f3\fs28 \cf10 \cb3 Make sure to restart the docker daemon.\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf10 \cb12 pkill dockerd\
+dockerd > /dev/null 2>&1 &\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f3\fs28 \cf10 \cb3 The\'a0
+\i /dev/null
+\i0 \'a0part is to avoid the output logs from docker daemon.\
+Now we have an SSL certificate and can run a secure registry.\
+\pard\pardeftab720\sl660\sa200\partightenfactor0
+
+\f2\fs60 \cf10 Running the Registry Securely\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f3\fs28 \cf10 The registry server supports several configuration switches as environment variables, including the details for running securely. We can use the same image we\'92ve already used, but configured for HTTPS.\
+For the secure registry, we need to run a container which has the SSL certificate and key files available, which we\'92ll do with an additional volume mount (so we have one volume for registry data, and one for certs). We also need to specify the location of the certificate files, which we\'92ll do with environment variables:\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf10 \cb12 mkdir registry-data\
+docker run -d -p 5000:5000 --name registry \\\
+  --restart unless-stopped \\\
+  -v $(pwd)/registry-data:/var/lib/registry -v $(pwd)/certs:/certs \\\
+  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \\\
+  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \\\
+  registry\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\fs24 \cf7 \cb1 \strokec7 \
+\
+\
+\
+\
+\
+\
+}
